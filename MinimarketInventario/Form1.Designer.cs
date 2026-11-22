@@ -30,19 +30,19 @@
         {
             label1 = new Label();
             groupBox1 = new GroupBox();
-            txtCodigo = new TextBox();
-            txtNombre = new TextBox();
-            label2 = new Label();
-            txtCategoria = new TextBox();
-            label3 = new Label();
-            label4 = new Label();
-            numPrecio = new NumericUpDown();
+            btnGuardar = new Button();
             numStock = new NumericUpDown();
             label5 = new Label();
-            btnGuardar = new Button();
+            numPrecio = new NumericUpDown();
+            label4 = new Label();
+            txtCategoria = new TextBox();
+            label3 = new Label();
+            txtNombre = new TextBox();
+            label2 = new Label();
+            txtCodigo = new TextBox();
             groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)numPrecio).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numStock).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numPrecio).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -76,67 +76,20 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Datos del producto";
             // 
-            // txtCodigo
+            // btnGuardar
             // 
-            txtCodigo.Location = new Point(138, 50);
-            txtCodigo.Name = "txtCodigo";
-            txtCodigo.Size = new Size(206, 34);
-            txtCodigo.TabIndex = 1;
-            // 
-            // txtNombre
-            // 
-            txtNombre.Location = new Point(138, 112);
-            txtNombre.Name = "txtNombre";
-            txtNombre.Size = new Size(278, 34);
-            txtNombre.TabIndex = 3;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(20, 118);
-            label2.Name = "label2";
-            label2.Size = new Size(89, 28);
-            label2.TabIndex = 2;
-            label2.Text = "Nombre:";
-            // 
-            // txtCategoria
-            // 
-            txtCategoria.Location = new Point(138, 174);
-            txtCategoria.Name = "txtCategoria";
-            txtCategoria.Size = new Size(278, 34);
-            txtCategoria.TabIndex = 5;
-            txtCategoria.TextChanged += textBox3_TextChanged;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(20, 180);
-            label3.Name = "label3";
-            label3.Size = new Size(101, 28);
-            label3.TabIndex = 4;
-            label3.Text = "Categoría:";
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.Location = new Point(462, 56);
-            label4.Name = "label4";
-            label4.Size = new Size(70, 28);
-            label4.TabIndex = 6;
-            label4.Text = "Precio:";
-            // 
-            // numPrecio
-            // 
-            numPrecio.DecimalPlaces = 2;
-            numPrecio.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            numPrecio.Location = new Point(554, 50);
-            numPrecio.Maximum = new decimal(new int[] { 1000000, 0, 0, 0 });
-            numPrecio.Name = "numPrecio";
-            numPrecio.Size = new Size(141, 34);
-            numPrecio.TabIndex = 7;
+            btnGuardar.BackColor = Color.DodgerBlue;
+            btnGuardar.Cursor = Cursors.Hand;
+            btnGuardar.FlatStyle = FlatStyle.Flat;
+            btnGuardar.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnGuardar.ForeColor = SystemColors.ButtonHighlight;
+            btnGuardar.Location = new Point(737, 81);
+            btnGuardar.Name = "btnGuardar";
+            btnGuardar.Size = new Size(150, 60);
+            btnGuardar.TabIndex = 10;
+            btnGuardar.Text = "Guardar";
+            btnGuardar.UseVisualStyleBackColor = false;
+            btnGuardar.Click += btnGuardar_Click;
             // 
             // numStock
             // 
@@ -158,20 +111,70 @@
             label5.TabIndex = 8;
             label5.Text = "Stock:";
             // 
-            // btnGuardar
+            // numPrecio
             // 
-            btnGuardar.BackColor = Color.DodgerBlue;
-            btnGuardar.Cursor = Cursors.Hand;
-            btnGuardar.FlatStyle = FlatStyle.Flat;
-            btnGuardar.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnGuardar.ForeColor = SystemColors.ButtonHighlight;
-            btnGuardar.Location = new Point(737, 81);
-            btnGuardar.Name = "btnGuardar";
-            btnGuardar.Size = new Size(150, 60);
-            btnGuardar.TabIndex = 10;
-            btnGuardar.Text = "Guardar";
-            btnGuardar.UseVisualStyleBackColor = false;
-            btnGuardar.Click += btnGuardar_Click;
+            numPrecio.DecimalPlaces = 2;
+            numPrecio.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            numPrecio.Location = new Point(554, 50);
+            numPrecio.Maximum = new decimal(new int[] { 1000000, 0, 0, 0 });
+            numPrecio.Name = "numPrecio";
+            numPrecio.Size = new Size(141, 34);
+            numPrecio.TabIndex = 7;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label4.Location = new Point(462, 56);
+            label4.Name = "label4";
+            label4.Size = new Size(70, 28);
+            label4.TabIndex = 6;
+            label4.Text = "Precio:";
+            // 
+            // txtCategoria
+            // 
+            txtCategoria.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtCategoria.Location = new Point(138, 174);
+            txtCategoria.Name = "txtCategoria";
+            txtCategoria.Size = new Size(278, 34);
+            txtCategoria.TabIndex = 5;
+            txtCategoria.TextChanged += textBox3_TextChanged;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label3.Location = new Point(20, 180);
+            label3.Name = "label3";
+            label3.Size = new Size(101, 28);
+            label3.TabIndex = 4;
+            label3.Text = "Categoría:";
+            // 
+            // txtNombre
+            // 
+            txtNombre.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtNombre.Location = new Point(138, 112);
+            txtNombre.Name = "txtNombre";
+            txtNombre.Size = new Size(278, 34);
+            txtNombre.TabIndex = 3;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label2.Location = new Point(20, 118);
+            label2.Name = "label2";
+            label2.Size = new Size(89, 28);
+            label2.TabIndex = 2;
+            label2.Text = "Nombre:";
+            // 
+            // txtCodigo
+            // 
+            txtCodigo.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtCodigo.Location = new Point(138, 50);
+            txtCodigo.Name = "txtCodigo";
+            txtCodigo.Size = new Size(206, 34);
+            txtCodigo.TabIndex = 1;
             // 
             // Form1
             // 
@@ -185,8 +188,8 @@
             Text = "Inventario Minimarket";
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)numPrecio).EndInit();
             ((System.ComponentModel.ISupportInitialize)numStock).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numPrecio).EndInit();
             ResumeLayout(false);
         }
 

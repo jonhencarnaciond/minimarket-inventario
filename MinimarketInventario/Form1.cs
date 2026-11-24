@@ -10,6 +10,7 @@ namespace MinimarketInventario
         public Form1()
         {
             InitializeComponent();
+            CargarProductos();
         }
 
         private void textBox3_TextChanged(object sender, EventArgs e)
@@ -48,6 +49,7 @@ namespace MinimarketInventario
                 MessageBox.Show("Producto guardado correctamente.", "Listo",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LimpiarFormulario();
+                CargarProductos();
             }
             catch (SqliteException ex) when (ex.SqliteErrorCode == 19)
             {
@@ -64,6 +66,12 @@ namespace MinimarketInventario
             numPrecio.Value = 0;
             numStock.Value = 0;
             txtCodigo.Focus();
+        }
+
+        private void CargarProductos()
+        {
+            dgvProductos.DataSource = _repositorio.ObtenerTodos();
+            dgvProductos.Columns["Precio"].DefaultCellStyle.Format = "N2";
         }
     }
 }

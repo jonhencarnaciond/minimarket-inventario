@@ -40,9 +40,12 @@
             txtNombre = new TextBox();
             label2 = new Label();
             txtCodigo = new TextBox();
+            dgvProductos = new DataGridView();
+            label6 = new Label();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numStock).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numPrecio).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvProductos).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -176,11 +179,38 @@
             txtCodigo.Size = new Size(206, 34);
             txtCodigo.TabIndex = 1;
             // 
+            // dgvProductos
+            // 
+            dgvProductos.AllowUserToAddRows = false;
+            dgvProductos.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dgvProductos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvProductos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvProductos.Location = new Point(12, 314);
+            dgvProductos.MultiSelect = false;
+            dgvProductos.Name = "dgvProductos";
+            dgvProductos.ReadOnly = true;
+            dgvProductos.RowHeadersWidth = 62;
+            dgvProductos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvProductos.Size = new Size(942, 283);
+            dgvProductos.TabIndex = 2;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            label6.Location = new Point(20, 271);
+            label6.Name = "label6";
+            label6.Size = new Size(186, 28);
+            label6.TabIndex = 3;
+            label6.Text = "Lista de productos";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(966, 609);
+            Controls.Add(label6);
+            Controls.Add(dgvProductos);
             Controls.Add(groupBox1);
             Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Name = "Form1";
@@ -190,7 +220,9 @@
             groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)numStock).EndInit();
             ((System.ComponentModel.ISupportInitialize)numPrecio).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvProductos).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -207,5 +239,7 @@
         private Button btnGuardar;
         private NumericUpDown numStock;
         private Label label5;
+        private DataGridView dgvProductos;
+        private Label label6;
     }
 }

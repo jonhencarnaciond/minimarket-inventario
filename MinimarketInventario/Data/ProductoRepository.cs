@@ -26,5 +26,33 @@ namespace MinimarketInventario.Data
             comando.Parameters.AddWithValue("$stock", producto.Stock);
             comando.ExecuteNonQuery();
         }
+
+        public List<Producto> ObtenerTodos()
+        {
+            var lista = new List<Producto>();
+
+            using var conexion = Database.ObtenerConexion();
+            conexion.Open();
+
+            string sql = "SELECT Id, Codigo, Nombre, Categoria, Precio, Stock FROM Productos ORDER BY Nombre;";
+
+            using var comando = new SqliteCommand(sql, conexion);
+            using var lector = comando.ExecuteReader();
+
+            while (lector.Read())
+            {
+                lista.Add(new Producto
+                {
+                    Id = lector.GetInt32(0),
+                    Codigo = lector.GetString(1),
+                    Nombre = lector.GetString(2),
+                    Categoria = lector.IsDBNull(3) ? "" : lector.GetString(3),
+                    Precio = (decimal)lector.GetDouble(4),
+                    Stock = lector.GetInt32(5)
+                });
+            }
+
+            return lista;
+        }
     }
 }

@@ -73,5 +73,15 @@ namespace MinimarketInventario
             dgvProductos.DataSource = _repositorio.ObtenerTodos();
             dgvProductos.Columns["Precio"].DefaultCellStyle.Format = "N2";
         }
+
+        private void btnActualizar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

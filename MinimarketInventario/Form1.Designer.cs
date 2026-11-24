@@ -42,6 +42,8 @@
             txtCodigo = new TextBox();
             dgvProductos = new DataGridView();
             label6 = new Label();
+            btnActualizar = new Button();
+            btnCancelar = new Button();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numStock).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numPrecio).BeginInit();
@@ -52,7 +54,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(20, 56);
+            label1.Location = new Point(20, 69);
             label1.Name = "label1";
             label1.Size = new Size(81, 28);
             label1.TabIndex = 0;
@@ -60,6 +62,8 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(btnCancelar);
+            groupBox1.Controls.Add(btnActualizar);
             groupBox1.Controls.Add(btnGuardar);
             groupBox1.Controls.Add(numStock);
             groupBox1.Controls.Add(label5);
@@ -74,7 +78,7 @@
             groupBox1.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
             groupBox1.Location = new Point(12, 12);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(942, 247);
+            groupBox1.Size = new Size(942, 275);
             groupBox1.TabIndex = 1;
             groupBox1.TabStop = false;
             groupBox1.Text = "Datos del producto";
@@ -86,7 +90,7 @@
             btnGuardar.FlatStyle = FlatStyle.Flat;
             btnGuardar.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnGuardar.ForeColor = SystemColors.ButtonHighlight;
-            btnGuardar.Location = new Point(737, 81);
+            btnGuardar.Location = new Point(738, 33);
             btnGuardar.Name = "btnGuardar";
             btnGuardar.Size = new Size(150, 60);
             btnGuardar.TabIndex = 10;
@@ -98,7 +102,7 @@
             // 
             numStock.DecimalPlaces = 2;
             numStock.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            numStock.Location = new Point(554, 112);
+            numStock.Location = new Point(554, 125);
             numStock.Maximum = new decimal(new int[] { 1000000, 0, 0, 0 });
             numStock.Name = "numStock";
             numStock.Size = new Size(141, 34);
@@ -108,7 +112,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label5.Location = new Point(462, 118);
+            label5.Location = new Point(462, 131);
             label5.Name = "label5";
             label5.Size = new Size(64, 28);
             label5.TabIndex = 8;
@@ -118,7 +122,7 @@
             // 
             numPrecio.DecimalPlaces = 2;
             numPrecio.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            numPrecio.Location = new Point(554, 50);
+            numPrecio.Location = new Point(554, 63);
             numPrecio.Maximum = new decimal(new int[] { 1000000, 0, 0, 0 });
             numPrecio.Name = "numPrecio";
             numPrecio.Size = new Size(141, 34);
@@ -128,7 +132,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.Location = new Point(462, 56);
+            label4.Location = new Point(462, 69);
             label4.Name = "label4";
             label4.Size = new Size(70, 28);
             label4.TabIndex = 6;
@@ -137,7 +141,7 @@
             // txtCategoria
             // 
             txtCategoria.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtCategoria.Location = new Point(138, 174);
+            txtCategoria.Location = new Point(138, 187);
             txtCategoria.Name = "txtCategoria";
             txtCategoria.Size = new Size(278, 34);
             txtCategoria.TabIndex = 5;
@@ -147,7 +151,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(20, 180);
+            label3.Location = new Point(20, 193);
             label3.Name = "label3";
             label3.Size = new Size(101, 28);
             label3.TabIndex = 4;
@@ -156,7 +160,7 @@
             // txtNombre
             // 
             txtNombre.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtNombre.Location = new Point(138, 112);
+            txtNombre.Location = new Point(138, 125);
             txtNombre.Name = "txtNombre";
             txtNombre.Size = new Size(278, 34);
             txtNombre.TabIndex = 3;
@@ -165,7 +169,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(20, 118);
+            label2.Location = new Point(20, 131);
             label2.Name = "label2";
             label2.Size = new Size(89, 28);
             label2.TabIndex = 2;
@@ -174,7 +178,7 @@
             // txtCodigo
             // 
             txtCodigo.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtCodigo.Location = new Point(138, 50);
+            txtCodigo.Location = new Point(138, 63);
             txtCodigo.Name = "txtCodigo";
             txtCodigo.Size = new Size(206, 34);
             txtCodigo.TabIndex = 1;
@@ -185,24 +189,54 @@
             dgvProductos.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dgvProductos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvProductos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvProductos.Location = new Point(12, 314);
+            dgvProductos.Location = new Point(12, 336);
             dgvProductos.MultiSelect = false;
             dgvProductos.Name = "dgvProductos";
             dgvProductos.ReadOnly = true;
             dgvProductos.RowHeadersWidth = 62;
             dgvProductos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvProductos.Size = new Size(942, 283);
+            dgvProductos.Size = new Size(942, 261);
             dgvProductos.TabIndex = 2;
             // 
             // label6
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            label6.Location = new Point(20, 271);
+            label6.Location = new Point(20, 296);
             label6.Name = "label6";
             label6.Size = new Size(186, 28);
             label6.TabIndex = 3;
             label6.Text = "Lista de productos";
+            // 
+            // btnActualizar
+            // 
+            btnActualizar.BackColor = Color.LightSkyBlue;
+            btnActualizar.Cursor = Cursors.Hand;
+            btnActualizar.FlatStyle = FlatStyle.Flat;
+            btnActualizar.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnActualizar.ForeColor = SystemColors.Desktop;
+            btnActualizar.Location = new Point(738, 112);
+            btnActualizar.Name = "btnActualizar";
+            btnActualizar.Size = new Size(150, 60);
+            btnActualizar.TabIndex = 11;
+            btnActualizar.Text = "Actualizar";
+            btnActualizar.UseVisualStyleBackColor = false;
+            btnActualizar.Click += btnActualizar_Click;
+            // 
+            // btnCancelar
+            // 
+            btnCancelar.BackColor = Color.LightGray;
+            btnCancelar.Cursor = Cursors.Hand;
+            btnCancelar.FlatStyle = FlatStyle.Flat;
+            btnCancelar.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnCancelar.ForeColor = SystemColors.Desktop;
+            btnCancelar.Location = new Point(738, 189);
+            btnCancelar.Name = "btnCancelar";
+            btnCancelar.Size = new Size(150, 60);
+            btnCancelar.TabIndex = 12;
+            btnCancelar.Text = "Cancelar";
+            btnCancelar.UseVisualStyleBackColor = false;
+            btnCancelar.Click += btnCancelar_Click;
             // 
             // Form1
             // 
@@ -241,5 +275,7 @@
         private Label label5;
         private DataGridView dgvProductos;
         private Label label6;
+        private Button btnCancelar;
+        private Button btnActualizar;
     }
 }

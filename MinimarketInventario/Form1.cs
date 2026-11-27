@@ -8,11 +8,18 @@ namespace MinimarketInventario
     {
         private readonly ProductoRepository _repositorio = new();
         private int? _idEditando = null;
+        private static readonly Color ColorPrimario = Color.FromArgb(37, 99, 235);
+        private static readonly Color ColorExito = Color.FromArgb(5, 150, 105);
+        private static readonly Color ColorPeligro = Color.FromArgb(220, 38, 38);
+        private static readonly Color ColorNeutro = Color.FromArgb(107, 114, 128);
+        private static readonly Color ColorFondo = Color.FromArgb(243, 244, 246);
         public Form1()
         {
             InitializeComponent();
             dgvProductos.CellClick += dgvProductos_CellClick;
             btnActualizar.Enabled = false;
+            btnEliminar.Enabled = false;
+            AplicarEstilo();
             CargarProductos();
         }
 
@@ -79,6 +86,7 @@ namespace MinimarketInventario
             _idEditando = null;
             btnGuardar.Enabled = true;
             btnActualizar.Enabled = false;
+            btnEliminar.Enabled = false;
         }
 
         private void CargarProductos()
@@ -130,6 +138,71 @@ namespace MinimarketInventario
 
             btnGuardar.Enabled = false;
             btnActualizar.Enabled = true;
+            btnEliminar.Enabled = true;
         }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            if (_idEditando == null) return;
+
+            var respuesta = MessageBox.Show(
+                $"¿Seguro que deseas eliminar \"{txtNombre.Text}\"? Esta acción no se puede deshacer.",
+                "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (respuesta != DialogResult.Yes) return;
+
+            _repositorio.Eliminar(_idEditando.Value);
+            MessageBox.Show("Producto eliminado correctamente.", "Listo",
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
+            LimpiarFormulario();
+            CargarProductos();
+        }
+
+        private void AplicarEstilo()
+        {
+            BackColor = ColorFondo;
+
+            EstilizarBoton(btnGuardar, ColorPrimario);
+            EstilizarBoton(btnActualizar, ColorExito);
+            EstilizarBoton(btnCancelar, ColorNeutro);
+            EstilizarBoton(btnEliminar, ColorPeligro);
+
+            dgvProductos.BorderStyle = BorderStyle.None;
+            dgvProductos.BackgroundColor = Color.White;
+            dgvProductos.RowHeadersVisible = false;
+            dgvProductos.EnableHeadersVisualStyles = false;
+            dgvProductos.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dgvProductos.ColumnHeadersHeight = 36;
+            dgvProductos.ColumnHeadersDefaultCellStyle.BackColor = ColorPrimario;
+            dgvProductos.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dgvProductos.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            dgvProductos.RowTemplate.Height = 30;
+            dgvProductos.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(249, 250, 251);
+            dgvProductos.DefaultCellStyle.SelectionBackColor = Color.FromArgb(191, 219, 254);
+            dgvProductos.DefaultCellStyle.SelectionForeColor = Color.Black;
+        }
+
+        private static void EstilizarBoton(Button boton, Color color)
+        {
+            boton.FlatStyle = FlatStyle.Flat;
+            boton.FlatAppearance.BorderSize = 0;
+            boton.BackColor = color;
+            boton.ForeColor = Color.White;
+            boton.Cursor = Cursors.Hand;
+            RedondearBoton(boton);
+        }
+
+        private static void RedondearBoton(Button boton, int radio = 12)
+        {
+            var ruta = new System.Drawing.Drawing2D.GraphicsPath();
+            var r = new Rectangle(0, 0, boton.Width, boton.Height);
+            ruta.AddArc(r.X, r.Y, radio, radio, 180, 90);
+            ruta.AddArc(r.Right - radio, r.Y, radio, radio, 270, 90);
+            ruta.AddArc(r.Right - radio, r.Bottom - radio, radio, radio, 0, 90);
+            ruta.AddArc(r.X, r.Bottom - radio, radio, radio, 90, 90);
+            ruta.CloseFigure();
+            boton.Region = new Region(ruta);
+        }
+
     }
 }

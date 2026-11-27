@@ -30,6 +30,8 @@
         {
             label1 = new Label();
             groupBox1 = new GroupBox();
+            btnCancelar = new Button();
+            btnActualizar = new Button();
             btnGuardar = new Button();
             numStock = new NumericUpDown();
             label5 = new Label();
@@ -42,8 +44,7 @@
             txtCodigo = new TextBox();
             dgvProductos = new DataGridView();
             label6 = new Label();
-            btnActualizar = new Button();
-            btnCancelar = new Button();
+            btnEliminar = new Button();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numStock).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numPrecio).BeginInit();
@@ -62,6 +63,7 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(btnEliminar);
             groupBox1.Controls.Add(btnCancelar);
             groupBox1.Controls.Add(btnActualizar);
             groupBox1.Controls.Add(btnGuardar);
@@ -82,6 +84,36 @@
             groupBox1.TabIndex = 1;
             groupBox1.TabStop = false;
             groupBox1.Text = "Datos del producto";
+            // 
+            // btnCancelar
+            // 
+            btnCancelar.BackColor = Color.LightGray;
+            btnCancelar.Cursor = Cursors.Hand;
+            btnCancelar.FlatStyle = FlatStyle.Flat;
+            btnCancelar.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnCancelar.ForeColor = SystemColors.Desktop;
+            btnCancelar.Location = new Point(738, 189);
+            btnCancelar.Name = "btnCancelar";
+            btnCancelar.Size = new Size(150, 60);
+            btnCancelar.TabIndex = 12;
+            btnCancelar.Text = "Cancelar";
+            btnCancelar.UseVisualStyleBackColor = false;
+            btnCancelar.Click += btnCancelar_Click;
+            // 
+            // btnActualizar
+            // 
+            btnActualizar.BackColor = Color.LightSkyBlue;
+            btnActualizar.Cursor = Cursors.Hand;
+            btnActualizar.FlatStyle = FlatStyle.Flat;
+            btnActualizar.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnActualizar.ForeColor = SystemColors.Desktop;
+            btnActualizar.Location = new Point(738, 112);
+            btnActualizar.Name = "btnActualizar";
+            btnActualizar.Size = new Size(150, 60);
+            btnActualizar.TabIndex = 11;
+            btnActualizar.Text = "Actualizar";
+            btnActualizar.UseVisualStyleBackColor = false;
+            btnActualizar.Click += btnActualizar_Click;
             // 
             // btnGuardar
             // 
@@ -208,35 +240,20 @@
             label6.TabIndex = 3;
             label6.Text = "Lista de productos";
             // 
-            // btnActualizar
+            // btnEliminar
             // 
-            btnActualizar.BackColor = Color.LightSkyBlue;
-            btnActualizar.Cursor = Cursors.Hand;
-            btnActualizar.FlatStyle = FlatStyle.Flat;
-            btnActualizar.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnActualizar.ForeColor = SystemColors.Desktop;
-            btnActualizar.Location = new Point(738, 112);
-            btnActualizar.Name = "btnActualizar";
-            btnActualizar.Size = new Size(150, 60);
-            btnActualizar.TabIndex = 11;
-            btnActualizar.Text = "Actualizar";
-            btnActualizar.UseVisualStyleBackColor = false;
-            btnActualizar.Click += btnActualizar_Click;
-            // 
-            // btnCancelar
-            // 
-            btnCancelar.BackColor = Color.LightGray;
-            btnCancelar.Cursor = Cursors.Hand;
-            btnCancelar.FlatStyle = FlatStyle.Flat;
-            btnCancelar.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnCancelar.ForeColor = SystemColors.Desktop;
-            btnCancelar.Location = new Point(738, 189);
-            btnCancelar.Name = "btnCancelar";
-            btnCancelar.Size = new Size(150, 60);
-            btnCancelar.TabIndex = 12;
-            btnCancelar.Text = "Cancelar";
-            btnCancelar.UseVisualStyleBackColor = false;
-            btnCancelar.Click += btnCancelar_Click;
+            btnEliminar.BackColor = Color.Crimson;
+            btnEliminar.Cursor = Cursors.Hand;
+            btnEliminar.FlatStyle = FlatStyle.Flat;
+            btnEliminar.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnEliminar.ForeColor = SystemColors.ButtonHighlight;
+            btnEliminar.Location = new Point(545, 189);
+            btnEliminar.Name = "btnEliminar";
+            btnEliminar.Size = new Size(150, 60);
+            btnEliminar.TabIndex = 13;
+            btnEliminar.Text = "Eliminar";
+            btnEliminar.UseVisualStyleBackColor = false;
+            btnEliminar.Click += btnEliminar_Click;
             // 
             // Form1
             // 
@@ -277,5 +294,6 @@
         private Label label6;
         private Button btnCancelar;
         private Button btnActualizar;
+        private Button btnEliminar;
     }
 }

@@ -13,6 +13,7 @@ namespace MinimarketInventario
             InitializeComponent();
             dgvProductos.CellClick += dgvProductos_CellClick;
             btnActualizar.Enabled = false;
+            btnEliminar.Enabled = false;
             CargarProductos();
         }
 
@@ -79,6 +80,7 @@ namespace MinimarketInventario
             _idEditando = null;
             btnGuardar.Enabled = true;
             btnActualizar.Enabled = false;
+            btnEliminar.Enabled = false;
         }
 
         private void CargarProductos()
@@ -130,6 +132,25 @@ namespace MinimarketInventario
 
             btnGuardar.Enabled = false;
             btnActualizar.Enabled = true;
+            btnEliminar.Enabled = true;
         }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            if (_idEditando == null) return;
+
+            var respuesta = MessageBox.Show(
+                $"¿Seguro que deseas eliminar \"{txtNombre.Text}\"? Esta acción no se puede deshacer.",
+                "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (respuesta != DialogResult.Yes) return;
+
+            _repositorio.Eliminar(_idEditando.Value);
+            MessageBox.Show("Producto eliminado correctamente.", "Listo",
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
+            LimpiarFormulario();
+            CargarProductos();
+        }
+
     }
 }
